@@ -9,6 +9,5 @@
     ],
     "start_url": "./",
     "display": "standalone",
-    "orientation": "portrait", // default
-    "gcm_sender_id" : "496452554357"
+    "orientation": "portrait" // default
 }
