@@ -29,7 +29,7 @@ self.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request)
       .then(function (response) {
-          // 해당 데이터 요청이 캐싱에 있으면, 캐싱을 반환
+          // 해당 데이터 요청이 캐싱에 있으면, 캐싱을 반환!
           // 요청이 없으면 fetch() 요청
         if (response) {
           return response;
