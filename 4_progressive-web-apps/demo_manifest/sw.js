@@ -13,7 +13,7 @@ self.addEventListener('install', function (event) {
     // 캐싱 처리
     caches.open(CACHE_NAME)
       .then(function (cache) {
-        // 앞에서 정의한 이름으로 캐싱 파일이 생성 되면 아래 로직 수행
+        // 앞에서 정의한 이름으로 캐싱 파일이 생성 되면 아래 로직 수행!
         return cache.addAll(cacheFileList);
       })
       .catch(function (error) {
