@@ -7,11 +7,21 @@
   </head>
   <body>
     <div id="app"></div>
+    <button>click</button>
 
     <script>
       var str = 'Hello';
+      var divElement = document.querySelector('#app');
+      var buttonElement = document.querySelector('button');
+
       window.addEventListener('DOMContentLoaded', function() {
-        
+        str = 'Hello World!';
+        divElement.innerHTML = str;
+        str = 'Hello Vue.js';
+      });
+
+      buttonElement.addEventListener('click', function() {
+        alert('clicked!');
       });
     </script>
   </body>
