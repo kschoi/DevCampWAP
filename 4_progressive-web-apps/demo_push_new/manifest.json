@@ -1,0 +1,14 @@
+{
+    "short_name": "manifest sample",
+    "icons":[
+        {
+            "src": "images/bts.jpg",
+            "type": " image/jpg",
+            "size": "192x192"
+        }
+    ],
+    "start_url": "./",
+    "display": "standalone",
+    "orientation": "portrait", // default
+    "gcm_sender_id" : "496452554357"
+}
