@@ -7,40 +7,38 @@
   </head>
   <body>
     <div id="app">
-      <!-- {{ str }}
-      <button v-on:click="showAlert">click</button> -->
-      <div>
-          <app-header></app-header>
-          <app-body></app-body>
-      </div>
+      {{ str }}
+      <button v-on:click="showAlert">click</button>
+      <!-- <app-header></app-header>
+      <app-body></app-body> -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script>
-      var appHeader = {
-        template: '<h1>Header</h1>'
-      };
-      var appBody = {
-        template: '<section>Body</section>'
-      };
+      // var appHeader = {
+      //   template: '<h1>Header</h1>'
+      // };
+      // var appBody = {
+      //   template: '<section>Body</section>'
+      // };
 
       var vm = new Vue({
         el: '#app',
         data: {
-          str: 'Hello'
+          str: 'Hello World!'
         },
         methods: {
           showAlert: function(){
-            alert('clicked');
+            alert('clicked!');
           }
         },
         // render: function(h){
         //   return h('div', this.str);
         // },
-        components: {
-          'app-header': appHeader,
-          'app-body': appBody
-        }
+        // components: {
+        //   'app-header': appHeader,
+        //   'app-body': appBody
+        // }
       });
     </script>
   </body>

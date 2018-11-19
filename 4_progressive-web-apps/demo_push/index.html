@@ -59,20 +59,20 @@
   <script>
   // main.js
   if ('serviceWorker' in navigator && 'PushManager' in window) {
-    console.log('Service Worker and Push is supported');
+    console.log('Service Worker and Push is supported. (브라우저가 서비스 워커와 푸시를 지원합니다.)');
 
     navigator.serviceWorker.register('sw.js')
       .then(function(swReg) {
-        console.log('Service Worker is registered', swReg);
+        console.log('Service Worker is registered. (서비스 워커가 등록되었습니다.)', swReg);
 
         swRegistration = swReg;
         initialiseUI();
       })
       .catch(function(error) {
-        console.error('Service Worker Error', error);
+        console.error('Service Worker Error. (서비스 워커 등록 실패)', error);
       });
   } else {
-    console.warn('Push messaging is not supported');
+    console.warn('Push messaging is not supported. (푸시 메시지를 지원하지 않습니다.)');
     pushButton.textContent = 'Push Not Supported';
   }
   </script>

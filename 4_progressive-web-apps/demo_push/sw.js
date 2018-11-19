@@ -22,7 +22,7 @@
 'use strict';
 
 self.addEventListener('push', function(event) {
-    console.log('[Service Worker] Push Received.');
+    console.log('[Service Worker] Push Received. ([Service Worker] 푸시 수신되었습니다.)');
   
     var title = 'Push Codelab';
     var options = {

@@ -43,9 +43,9 @@ function initialiseUI() {
     isSubscribed = !(subscription === null);
 
     if (isSubscribed) {
-      console.log('User IS subscribed.');
+      console.log('User is subscribed. (푸시 서비스 구독합니다.)');
     } else {
-      console.log('User is NOT subscribed.');
+      console.log('User is NOT subscribed. (푸시 서비스 구독하지 않습니다.)');
     }
 
     // 푸시 등록이 되면 버튼에 등록 여부를 표시
@@ -57,7 +57,7 @@ function initialiseUI() {
 function updateBtn() {
   // 사용자 허용 여부 확인
   if (Notification.permission === 'denied') {
-    pushButton.textContent = 'Push Messaging Blocked.';
+    pushButton.textContent = 'Push Messaging Blocked. (푸시 메시지를 허용하지 않습니다.)';
     pushButton.disabled = true;
     updateSubscriptionOnServer(null);
     return;
@@ -98,7 +98,6 @@ function updateSubscriptionOnServer(subscription, unsubscribed) {
     subscriptionJson.textContent = JSON.stringify(subscription);
     subscriptionDetails.classList.remove('is-invisible');
     // firebase(백엔드 & 디비)에 전송
-    console.log(subscription);    
     sendDeviceKeytoFirebase(subscription.endpoint.split('send/')[1]);
     // $.ajax({
     //   url: 'api/push-keys',
@@ -109,6 +108,7 @@ function updateSubscriptionOnServer(subscription, unsubscribed) {
     // });
   } else {
     subscriptionDetails.classList.add('is-invisible');
+    removeDeviceKeyInFirebase(subscription.endpoint.split('send/')[1]);
   }
 }
 
