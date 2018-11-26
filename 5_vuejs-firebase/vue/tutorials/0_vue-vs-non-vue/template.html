@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .text-blue{color:blue}
+    .font-up{font-size:30px}
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{ str }}
+        <div v-if="loginStatus">
+            <button v-on:mouseover="clickBtn">sign in</button>
+        </div>
+        <div>
+            <h1>list</h1>
+            <ul>
+                <li v-for="item in items">{{ item }}</li>
+            </ul>
+        </div>
+        <div>
+            <h1>Class & Style Binding</h1>
+            <p class="text-blue" v-bind:class="cssCondition ? 'font-up': ''" v-bind:id="myId">Text is a text</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+            str: 'Hello',
+            loginStatus: true,
+            items : [10, 20, 30],
+            cssClass: 'text-blue',
+            myId: 1000,
+            cssCondition: false,
+        },
+        methods: {
+            clickBtn: function(){
+                this.loginStatus = false;
+                console.log('clicked');
+            }
+        }
+    });
+    </script>
+
+</body>
+</html>

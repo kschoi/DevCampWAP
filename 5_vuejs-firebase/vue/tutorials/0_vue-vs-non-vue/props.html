@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Props</title>
+    <style>
+    header{border:1px solid red}
+    section{border:1px solid blue}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <app-body v-bind:프롭스 속셩 명='상위 컴포넌트의 데이터 속성 명'></app-body> -->
+        <!-- <app-header v-on:아래 컴포넌트에서 올려준 이벤트 이름="상위 컴포넌트의 메서드 명"></app-header> -->
+        <app-header v-bind:propsdata="userdata" v-on:send="increaseNum"></app-header>
+        <app-body v-bind:propsdata="userdata"></app-body>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        var appHeader = {
+            props: ['propsdata'],
+            template: `
+                <header>
+                    {{ propsdata.name }}
+                    <button v-on:click="sendEvent">send</button>
+                </header>
+            `,
+            methods: {
+                sendEvent: function(){
+                    console.log('clicked');
+                    this.$emit('send');
+                }
+            }
+            // data: function(){
+            //     return {
+            //         num2: 100
+            //     }
+            // }
+        };
+        var appBody = {
+            props: ['propsdata'],
+            template: `
+                <section>
+                    {{ propsdata.num }}
+                </section>
+            `,
+            // data: function() {
+            //   return {
+            //     str: 20
+            //   }  
+            // }
+        };
+
+        new Vue({
+            el: '#app',
+            data: function(){
+                return {
+                    userdata : {
+                        num: 20,
+                        name: '고객',
+                    }
+                }
+            },
+            components: {
+                'app-header': appHeader,
+                'app-body': appBody
+            },
+            methods: {
+                increaseNum: function(){
+                    this.userdata.num += 10; 
+                },
+                passUserName: function(){
+                    this.userdata.name = '철수'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

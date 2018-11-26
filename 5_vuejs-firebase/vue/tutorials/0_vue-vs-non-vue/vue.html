@@ -7,39 +7,78 @@
   </head>
   <body>
     <div id="app">
-      {{ str }}
-      <button v-on:click="showAlert">click</button>
-      <!-- <app-header></app-header>
-      <app-body></app-body> -->
+      <!-- {{ str }}
+      <button v-on:click="showAlert">click</button> -->
+      <app-header></app-header>
+      <app-body></app-body>
+      <app-footer></app-footer>
+    </div>
+    <div id="app2">
+      <app-header></app-header>
+      <app-body></app-body>
+      <app-footer></app-footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script>
-      // var appHeader = {
-      //   template: '<h1>Header</h1>'
-      // };
-      // var appBody = {
-      //   template: '<section>Body</section>'
-      // };
+      var appHeader = {
+        template: '<h1>Header</h1>'
+      };
+      var appBody = {
+        template: '<section>Body</section>'
+      };
+      Vue.component('app-footer', {
+        template: '<div>footer</div>'
 
+      });
+
+      // 전역 컴포넌트 등록 방법
+      // Vue.component('컴포넌트 이름', 컴포넌트 내용);
+
+      // 지역 컴포넌트 등록 방법
+      // new Vue({
+      //   components: {
+      //     '컴포넌트 이름': 컴포넌트 내용
+      //   }
+      // });
+
+      // 첫번째 인스턴스
       var vm = new Vue({
         el: '#app',
         data: {
           str: 'Hello World!'
         },
-        methods: {
-          showAlert: function(){
-            alert('clicked!');
-          }
-        },
-        // render: function(h){
-        //   return h('div', this.str);
-        // },
-        // components: {
-        //   'app-header': appHeader,
-        //   'app-body': appBody
-        // }
+        components: {
+          'app-header': appHeader,
+          'app-body': appBody
+        }
       });
+
+      // 두번째 인스턴스
+      var vm = new Vue({
+        el: '#app2'
+      });
+
+
+      
+      // var vm = new Vue({
+      //   el: '#app',
+      //   data: {
+      //     str: 'Hello World!'
+      //   },
+      //   methods: {
+      //     showAlert: function(){
+      //       alert('clicked!');
+      //     }
+      //   },
+      //   render: function(h){
+      //     return h('div', this.str);
+      //   },
+      //   components: {
+      //     'app-header': appHeader,
+      //     'app-body': appBody
+      //   }
+      // });
     </script>
   </body>
 </html>
