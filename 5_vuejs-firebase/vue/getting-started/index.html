@@ -13,7 +13,20 @@
         el: '#app',
         data: {
           message: 'Hello Vue.js!'
-        }
+        },
+        // 1
+        render: function(createElement){
+          return createElement('div', 'hello Vue.js!!');
+        },
+        // 2
+        render: function(h){
+          return h('div', 'hello Vue.js!!');
+        },
+        // 3
+        render: (h) => h('div', 'hello Vue.js!!')
+        ,
+        // 4
+        render: (h) => h(App);
       })
     </script>
   </body>

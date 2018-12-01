@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/">main</router-link>
+        <router-link to="/list">list</router-link>
+        <router-view></router-view>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+
+    const mainComponent = {
+        template : '<div>main</div>'
+    };
+    
+    const listComponent = {
+        template : '<div>list</div>'
+    }
+    const router = new VueRouter({
+        mode: 'history',
+        routes: [
+            {
+                path: '/',
+                component: mainComponent
+            },
+            {
+                path: '/list',
+                component: listComponent
+            }
+        ]
+    });
+
+    new Vue({
+        el: "#app",
+        data () {
+            return {
+                message: "hello, vue!",
+                num : 0
+            }
+        },
+        router
+    });
+
+    </script>
+</body>
+</html>

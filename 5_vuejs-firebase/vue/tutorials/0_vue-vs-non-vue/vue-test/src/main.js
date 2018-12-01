@@ -3,6 +3,5 @@ import App from './App.vue'
 
 new Vue({
   el: '#app',
-  // h : hyper script
   render: h => h(App)
 })

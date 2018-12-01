@@ -14,8 +14,9 @@
     <div id="app">
         <!-- <app-body v-bind:프롭스 속셩 명='상위 컴포넌트의 데이터 속성 명'></app-body> -->
         <!-- <app-header v-on:아래 컴포넌트에서 올려준 이벤트 이름="상위 컴포넌트의 메서드 명"></app-header> -->
-        <app-header v-bind:propsdata="userdata" v-on:send="increaseNum"></app-header>
-        <app-body v-bind:propsdata="userdata"></app-body>
+        <app-header v-bind:propsdata="num" v-on:send="increaseNum"></app-header>
+        <app-body v-bind:propsdata="num"></app-body>
+        <app-search></app-search>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
@@ -24,7 +25,7 @@
             props: ['propsdata'],
             template: `
                 <header>
-                    {{ propsdata.name }}
+                    {{ propsdata }}
                     <button v-on:click="sendEvent">send</button>
                 </header>
             `,
@@ -44,7 +45,7 @@
             props: ['propsdata'],
             template: `
                 <section>
-                    {{ propsdata.num }}
+                    {{ propsdata }}
                 </section>
             `,
             // data: function() {
@@ -58,10 +59,7 @@
             el: '#app',
             data: function(){
                 return {
-                    userdata : {
-                        num: 20,
-                        name: '고객',
-                    }
+                    num: 20
                 }
             },
             components: {
@@ -70,10 +68,7 @@
             },
             methods: {
                 increaseNum: function(){
-                    this.userdata.num += 10; 
-                },
-                passUserName: function(){
-                    this.userdata.name = '철수'
+                    this.num += 10; 
                 }
             }
         })
