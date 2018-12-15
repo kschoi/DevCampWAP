@@ -3,8 +3,8 @@
         <p id="p1">Hello Vue.js</p>
         <ul>
             <li class="shadow"
-                v-for="(item, index) in propsdata">
-                {{ item }}
+                v-for="(item, index) in todoList">
+                {{ item }}, {{ doubleNumber }}
                 <span class="removeBtn" @click="removeItem(item, index)">
                     <i class="far fa-trash-alt"></i>
                 </span>
@@ -14,63 +14,26 @@
 </template>
 
 <script>
-
+import { mapState, mapActions, mapGetters } from 'vuex';
 // import {bus} from './utils/bus.js'
 
 // 데이터 호출 (리스트 받아오기)
 export default {
-    props: [ 'propsdata' ],
-    // data(){
-    //     return {
-    //         items: [],
-    //     }
-    // },
-    methods: {
-        removeItem(item, index){
-            // console.log(index);
-            // localStorage.removeItem(item);
-            // this.items.splice(index,1);
-            this.$emit('remove:item', index, index);
+    computed: {
+        // ...mapGetters({
+        //     todoList
+        // }),
+        ...mapGetters(['todoList']),
+        doubleNumber(){
+            return 20;
         }
     },
-    // 화면에 붙기 전
-    // beforeCreated () {}, // 데이터 접근이 안됨
-    // created() { // 데이터가 담김
-    //     // console.log('created');
-    //     // axios.get('products')
-    //     //     .then(function(response){
-    //     //         vm.items = response.data;
-    //     //     })
-    //     if (localStorage.length > 0) {
-            
-    //         for (let index = 0; index < localStorage.length; index++) {
-    //             if (localStorage.key(index) !== 'loglevel:webpack-dev-server') {
-    //                 const item = localStorage.key(index);
-    //                 this.items.push(item);
-    //             }
-    //         }
-    //     }
-    // },
-    // render 하기 전
-    // beforeMount() {
-    //     console.log('beforeMount');
-
-    //     var p1 = document.querySelector('#p1');
-    //     console.log('beforeMount', p1);
-    // },
-    // // render 후 (화면에 인스턴스가 붙고난 직후)
-    // mounted(){
-    //     console.log('mounted');
-
-    //     var p1 = document.querySelector('#p1');
-    //     console.log('mounted', p1);
-    // },
-    // beforeMount () {
-    //     var vm = this;
-    //     bus.$on('remove-all-items', function(){
-    //         vm.items = [];
-    //     })
-    // }
+    methods: {
+        removeItem(item, index){
+            // this.$emit('remove:item', item, index);
+            this.$store.commit('removeTodoItem', {item,index});
+        }
+    },
 }
 </script>
 

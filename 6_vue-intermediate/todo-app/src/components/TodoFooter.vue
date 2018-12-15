@@ -12,7 +12,9 @@
 export default {
     methods: {
         clearAll(){
-            this.$emit('remove:all');
+            // bus.$emit('remove:all');
+            // this.$emit('remove:all');
+            this.$store.commit('clearAllTodoItem');
         }
     }
 }

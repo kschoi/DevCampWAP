@@ -22,9 +22,10 @@ export default {
         addItem() {
             if (this.inputText !== '') {
                 var value = this.inputText;
-                // localStorage.setItem(value, value);
-                // this.$emit('add');
-                this.$emit('add:item', value);
+                // 이벤트 발생 (상위 컴포넌트의 함수 호출)
+                // this.$emit('add:item', value);
+                // 스토어 커밋 this.$store.commit('뮤테이션 명')
+                this.$store.commit('addTodoItem', value);
                 this.clearInput();
             }
         },
